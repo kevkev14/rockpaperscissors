@@ -2,12 +2,15 @@ const player1Text = document.querySelector("#player1Text");
 const player2Text = document.querySelector("#player2Text");
 const resultText = document.querySelector("#resultText");
 const choiceBtns = document.querySelectorAll(".buttons");
-const player1Element = document.querySelector("#player1");
 const player1Paper = document.querySelector("#player1");
+const player1Element = document.querySelector("#player1");
+const player2Element = document.querySelector("#player2");
 
 document.querySelector(".rock").addEventListener("click", rock);
 document.querySelector(".paper").addEventListener("click", paper);
 document.querySelector(".scissors").addEventListener("click", scissor);
+
+
 
 
 let player1;
@@ -100,15 +103,22 @@ function checkWinner(player1, player2) {
   const winElement = document.querySelector("#win");
   const loseElement = document.querySelector("#lose");
 
+  const handsImages = {
+    rock: "./hand_rock.png",
+    paper: "./hand_paper.png",
+    scissors: "./hand_scissors.png",
+  };
+
   if (player1 === player2) {
     player1Element.classList.add("shake");
-    drawElement.classList.remove("hidden");
+      drawElement.classList.remove("hidden");
   } else if (
     (player1 === "rock" && player2 === "scissors") ||
     (player1 === "scissors" && player2 === "paper") ||
     (player1 === "paper" && player2 === "rock")
   ) {
     winElement.classList.remove("hidden");
+    player1Element.getElementById("./hand_rock.png").src=handsImages[player1];
   } else {
     loseElement.classList.remove("hidden");
   }
@@ -141,6 +151,7 @@ function scissor() {
 
 function player2Turn() {
   const randNum = Math.floor(Math.random() * 3) + 1;
+  player2Element.classList.add("shake");
 
   switch (randNum) {
     case 1:
