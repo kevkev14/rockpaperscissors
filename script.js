@@ -3,6 +3,7 @@ const player2Text = document.querySelector("#player2Text");
 const resultText = document.querySelector("#resultText");
 const choiceBtns = document.querySelectorAll(".buttons");
 const player1Element = document.querySelector("#player1");
+const player1Paper = document.querySelector("#player1");
 
 document.querySelector(".rock").addEventListener("click", rock);
 document.querySelector(".paper").addEventListener("click", paper);
