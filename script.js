@@ -2,6 +2,7 @@ const player1Text = document.querySelector("#player1Text");
 const player2Text = document.querySelector("#player2Text");
 const resultText = document.querySelector("#resultText");
 const choiceBtns = document.querySelectorAll(".buttons");
+const player1Element = document.querySelector("#player1");
 
 document.querySelector(".rock").addEventListener("click", rock);
 document.querySelector(".paper").addEventListener("click", paper);
@@ -46,7 +47,7 @@ let result;
 } */
 
 
-function checkWinner(player1, player2){
+/* function checkWinner(player1, player2){
   if (player1 === player2){
     document.querySelector("#player1").classList.add("shake")
     document.querySelector("#draw").classList.remove("hidden");
@@ -89,11 +90,33 @@ function checkWinner(player1, player2){
 
     }
   }
+} */
+
+
+function checkWinner(player1, player2) {
+  const player1Element = document.querySelector("#player1");
+  const drawElement = document.querySelector("#draw");
+  const winElement = document.querySelector("#win");
+  const loseElement = document.querySelector("#lose");
+
+  if (player1 === player2) {
+    player1Element.classList.add("shake");
+    drawElement.classList.remove("hidden");
+  } else if (
+    (player1 === "rock" && player2 === "scissors") ||
+    (player1 === "scissors" && player2 === "paper") ||
+    (player1 === "paper" && player2 === "rock")
+  ) {
+    winElement.classList.remove("hidden");
+  } else {
+    loseElement.classList.remove("hidden");
+  }
 }
 
 
 function rock() {
   let player1 = "rock";
+  player1Element.classList.add("shake");
   checkWinner(player1, player2);
   console.log("player1Turn", player1)
   console.log(player2)
@@ -101,6 +124,7 @@ function rock() {
 
 function paper() {
   let player1 = "paper";
+  player1Element.classList.add("shake");
   checkWinner(player1, player2);
   console.log("player1Turn", player1)
   console.log(player2)
@@ -108,6 +132,7 @@ function paper() {
 
 function scissor() {
   let player1 = "scissors";
+  player1Element.classList.add("shake");
   checkWinner(player1, player2);
   console.log("player1Turn", player1)
   console.log(player2)
